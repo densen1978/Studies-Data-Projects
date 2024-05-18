@@ -1,5 +1,5 @@
 # Turing College Projects
-This repository contains of main projects while studying Data Analytics in Turring College (2023-03 batch). 
+This repository contains of main projects while studying Data Analytics in Turring College (2023-05 batch). 
 The whole course contained 4 main modules with multiple sprints:
 
 1. Introduction to Data analytics
@@ -8,8 +8,8 @@ The whole course contained 4 main modules with multiple sprints:
    - SQL and Databases (BigQuery)
    - Advanced SQL and Databases (BigQuery)
 
-2. Communicating Analysis Results: Tableau
-   - Visualising Data Using Tableau
+2. Communicating Analysis Results: Looker Studio
+   - Visualising Data Using Looker Studio
    - Presentations & Soft Skills
 
 3. Main Analysis Types
@@ -28,8 +28,8 @@ The whole course contained 4 main modules with multiple sprints:
   
 6. Capstone Project
 
-   The main final project was made for  "Market Insights for E-commerce Company in 2019".
-   The Capstone project with all queries, dashboard, reports and presentation can be found [here](https://github.com/LinasSut/Capstone-Project/tree/main)
+   The main final project was made for  "Customers segmentation and Probability of Purchase Modelling".
+   The Capstone project with all queries, dashboard, reports and presentation can be found [here](https://github.com/densen1978/Capstone-project)
 
 
 
