@@ -132,12 +132,12 @@ JOIN retention_rates ON retention_cohort.start_date = retention_rates.start_date
 ## Visualizations
 
 ### Retention Cohorts
-![Retention Cohorts](https://github.com/densen1978/retention-churn-cohorts/blob/main/Retention-cohorts.png)
+![Retention Cohorts](https://github.com/densen1978/Studies-Data-Projects/blob/main/Main%20Analysis%20Types/Retention%2C%20Cohorts%20%26%20Churn/Retention-cohorts.png)
 
 ### Retention Rate
-![Retention Rate](https://github.com/densen1978/retention-churn-cohorts/blob/main/Retention-rate.png)
+![Retention Rate](https://github.com/densen1978/Studies-Data-Projects/blob/main/Main%20Analysis%20Types/Retention%2C%20Cohorts%20%26%20Churn/Retention-rate.png)
 
 ### Churn Rate
-![Churn Rate](https://github.com/densen1978/retention-churn-cohorts/blob/main/Churn-rate.png)
+![Churn Rate](https://github.com/densen1978/Studies-Data-Projects/blob/main/Main%20Analysis%20Types/Retention%2C%20Cohorts%20%26%20Churn/Churn-rate.png)
 
 
