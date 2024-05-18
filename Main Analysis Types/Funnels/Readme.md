@@ -15,7 +15,7 @@
 
 The funnels.sql code was utilized to extract data for further analysis. Funnels were generated for the top three countries based on customer count. The top three countries exhibit significant differences primarily in the number of engaged customers. However, the percentages of customer drop-off throughout the events remain relatively consistent despite the variations in countries. 
 
-<img width="1594" alt="Funnels Charts" src="https://github.com/LinasSut/Turing-College-Data-Projects/assets/92430287/e5ab2bfc-879e-43ad-9741-f8ae79e2ec33">
+<img width="1594" alt="Funnels Charts" src="https://github.com/densen1978/Studies-Data-Projects/blob/main/Main%20Analysis%20Types/Funnels/Funnels%20Charts.png">
 
 ## Conclusions
 
