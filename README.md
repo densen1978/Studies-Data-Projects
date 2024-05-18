@@ -22,6 +22,7 @@ The whole course contained 4 main modules with multiple sprints:
    - Product Analyst
    - Marketing Analyst
    - Payments/Monetization Analyst
+   - Financial Analyst
   
 5. Specializations
    - Python for Data Analytics 
