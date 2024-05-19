@@ -3,25 +3,17 @@ In the fast-paced world of e-commerce, Olist plays a crucial role in the Brazili
 
 ## Main Questions 
 
-**How does delivery time vary over different time periods?**
-   
-  - Understanding the variations in delivery times across different periods helps in optimizing logistics and resource allocation. It allows businesses to identify peak demand periods and plan for sufficient manpower and inventory to meet customer expectations. Timely deliveries contribute to customer satisfaction and loyalty, which are crucial for long-term success.
+### 1. What is the average order value and how does this vary by product category or payment method?
+Understanding the average order value and its variation helps optimize pricing strategies, enhance marketing efforts, and identify high-value product categories or preferred payment methods.
 
-**Does the Pareto principle apply to our sellers, and what percentage of sellers contribute to 80% of the total revenue stream?**
+### 2. Which product categories have the highest revenue on Olist, and how can the company increase revenue across different categories?
+Identifying the top revenue-generating product categories allows Olist to focus resources on successful areas while developing strategies to boost revenue in less profitable categories.
 
-  - The Pareto principle, or the 80/20 rule, often holds true in business where a small percentage of contributors generate the majority of results. Identifying the key sellers driving the bulk of revenue enables strategic focus and resource allocation. This insight aids in strengthening relationships with high-performing sellers and products in order to optimize support for their success.
+### 3. How profitable is Olist's customer portfolio?
+Analyzing the profitability of the customer portfolio helps in determining the effectiveness of customer acquisition and retention strategies, ensuring resources are allocated to the most profitable customer segments.
 
-**How many deliveries are late/on-time, and how does their distribution vary over time?**
-  - Monitoring delivery timeliness is crucial for maintaining customer satisfaction. Analyzing the distribution of on-time and late deliveries over time helps in identifying patterns or potential issues in the supply chain. This data is invaluable for improving operational efficiency, reducing late deliveries, and enhancing overall customer experience.
-
-**Which products are delivered, and how does the delivery time differ for each product category?** 
-  - Different products may have distinct logistical challenges or requirements. Understanding the delivery times for each product category enables businesses to tailor their logistics strategies accordingly. It aids in optimizing inventory management, ensuring timely availability of products, and meeting diverse customer expectations for various types of goods.
-
-**In which state/region do sellers generate the most revenue?**
-  - Knowing the geographical areas contributing the most revenue allows businesses to target and prioritize specific regions for marketing efforts, partnerships, or expansion. It also helps in optimizing distribution networks and understanding regional market dynamics, ultimately leading to more effective business strategies.
-
-**Where do our top sellers make the most deliveries?** 
-  - Identifying the geographical areas where top sellers are most active provides insights into market demand and seller performance. This information can be used to allocate resources effectively, identify potential growth areas, and tailor marketing strategies to capitalize on the strengths of top-performing sellers in specific regions.
+### 4. How do customer ratings affect product sales performance on Olist?
+Understanding the impact of customer ratings on sales performance can guide improvements in product quality and customer service, ultimately driving higher sales and better customer satisfaction.
 
 ## Reports
 
@@ -29,11 +21,10 @@ In the fast-paced world of e-commerce, Olist plays a crucial role in the Brazili
 
 All the analysis steps can be found in the report, where all main questions and main insights are clearly introduced.
 
-The report can be found [here](https://docs.google.com/document/d/15pt-2DFvFLcNxzFZxBJ5cooqN7awbk7voviG9eJvlfY/edit?usp=sharing)
+The report can be found [here]()
 
 ### Tableau Report
 
-To answer these questions interactive Tableau report was prepared, which can be found [here](https://public.tableau.com/app/profile/linas.sutkaitis/viz/Payments_16999620969080/OlistOverviewTrends
-)
+To answer these questions interactive Tableau report was prepared, which can be found [here](https://lookerstudio.google.com/u/0/reporting/dc499b1c-8559-448e-a227-8761c6288e4c/page/p_tphw12h3dd)
 
 
