@@ -62,4 +62,4 @@ In summary, the RFM analysis provides valuable insights into customer behavior a
 
 #### Looker Studio Report
 
-To answer these questions an interactive Looker Studio report was prepared, which can be found [here](https://)
+To answer these questions an interactive Looker Studio report was prepared, which can be found [here](https://lookerstudio.google.com/u/0/reporting/e258eefd-d613-4b82-9b62-3363d417be14/page/UYucD)
