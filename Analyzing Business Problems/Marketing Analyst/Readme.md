@@ -48,7 +48,7 @@ For the business to understand users' behavior, session times per campaigns, and
 
 **Looker Studio Report**
 
-  To answer these questions, an interactive Looker Studio report was prepared, which can be found [here](https://)
+  To answer these questions, an interactive Looker Studio report was prepared, which can be found [here](https://lookerstudio.google.com/u/1/reporting/62c314bc-debc-4d13-b1a8-5689a6e2b104/page/3wJaD)
 
 
 
