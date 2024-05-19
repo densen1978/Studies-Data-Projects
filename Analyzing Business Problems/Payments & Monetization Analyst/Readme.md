@@ -21,7 +21,7 @@ Understanding the impact of customer ratings on sales performance can guide impr
 
 All the analysis steps can be found in the report, where all main questions and main insights are clearly introduced.
 
-The report can be found [here]()
+The report can be found [here](https://github.com/densen1978/Studies-Data-Projects/blob/main/Analyzing%20Business%20Problems/Payments%20%26%20Monetization%20Analyst/Analyzing%20Business%20Problem%20-%20Payments_Monetizations.pdf)
 
 ### Tableau Report
 
