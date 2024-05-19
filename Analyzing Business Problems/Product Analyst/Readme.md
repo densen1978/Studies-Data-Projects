@@ -34,4 +34,4 @@ All the analysis steps can be found in the report, where all main questions and 
 The report can be found [here](https://github.com/densen1978/Studies-Data-Projects/blob/main/Analyzing%20Business%20Problems/Product%20Analyst/Analyzing%20Business%20Problem%20-%20Product%20Analysis.pdf)
 
 ### Looker Studio Report
-To answer these questions interactive Tableau report was prepared, which can be found [here](https://lookerstudio.google.com/u/0/reporting/9aabcc13-542b-456c-94f7-2de3403289e1/page/3wJaD)
+To answer these questions interactive Looker Studio report was prepared, which can be found [here](https://lookerstudio.google.com/u/0/reporting/9aabcc13-542b-456c-94f7-2de3403289e1/page/3wJaD)
