@@ -1,116 +1,86 @@
--- Selecting all relevant data for futher analysis
- WITH main_data AS (
-  SELECT 
-    user_pseudo_id,
-    event_name,
-    TIMESTAMP_MICROS(event_timestamp) AS event_time,
+---------------------------------------------------------------------------------------
+--      Marketing analyst project - Average weekday visit duration by campaigns      --
+--      Last edit: 2023/11/11                                                         --
+---------------------------------------------------------------------------------------
+
+-- CTE extracts data from a table named turing_data_analytics.raw_events and calculates the time difference in minutes (inactivity_time) between consecutive events for each user_pseudo_id. This is done to identify sessions based on a 30-minute inactivity threshold
+WITH events AS (
+    SELECT
+        user_pseudo_id,
+        TIMESTAMP_MICROS(event_timestamp)                                                                            AS event_time,
+        campaign,
+        event_name,
+        EXTRACT(dayofweek FROM DATE_SUB(PARSE_DATE("%Y%m%d", event_date), INTERVAL 1 DAY)) AS day_of_week,
+        FORMAT_DATE('%A', DATE_SUB(PARSE_DATE("%Y%m%d", event_date), INTERVAL 1 DAY)) AS day_name,
+        -- CASE 
+        --   WHEN EXTRACT(dayofweek FROM DATE_SUB(PARSE_DATE("%Y%m%d", event_date), INTERVAL 1 DAY)) = 1 THEN 6
+        --   ELSE EXTRACT(dayofweek FROM DATE_SUB(PARSE_DATE("%Y%m%d", event_date), INTERVAL 1 DAY))-2 END                           AS day_of_week,
+        DATE_DIFF(TIMESTAMP_MICROS(event_timestamp),LAG(TIMESTAMP_MICROS(event_timestamp)) OVER (PARTITION BY user_pseudo_id ORDER BY TIMESTAMP_MICROS(event_timestamp)), minute) AS inactivity_time
+
+    FROM `turing_data_analytics.raw_events`
+),
+
+-- Takes the data from the "events" CTE and creates sessions by concatenating user_pseudo_id with a session number. It also extracts the session start time, the next session's start time, and campaign. Sessions are defined based on the inactivity threshold of 30 minutes.
+sessions AS (
+    SELECT
+        user_pseudo_id,
+        campaign,
+        event_name,
+        event_time AS session_start_at,
+        CONCAT(user_pseudo_id, '-', ROW_NUMBER() OVER (PARTITION BY user_pseudo_id ORDER BY event_time))            AS session_id,
+        LEAD(event_time) OVER (PARTITION BY user_pseudo_id ORDER BY event_time)                                     AS next_session_start_at
+    FROM events
+    WHERE (inactivity_time > 30 OR inactivity_time IS NULL)
+    GROUP BY user_pseudo_id, 
     campaign,
-    country,
-    purchase_revenue_in_usd,
-  FROM `turing_data_analytics.raw_events`
-),
-
-last_session as  (
-  SELECT 
-    user_pseudo_id,
-    event_name,
-    event_time, 
-    campaign,
-    country,
-    purchase_revenue_in_usd,
-    LAG(main_data.event_time) OVER (PARTITION BY user_pseudo_id ORDER BY main_data.event_time) AS last_event
-  FROM main_data
-),
-
--- Calculating a new session as new session from 60 minutes of inactivity
-new_session as (
-  SELECT *, 
-    CASE WHEN (event_time - last_event) >= INTERVAL '60' MINUTE OR last_event IS NULL THEN 1 ELSE 0 END as is_new_session
-  FROM last_session
-),
-
--- Calculating unique global session ID and User session ID
-global_sessions as (
-  SELECT 
-    user_pseudo_id,
-    event_name,
-    event_time,
-    SUM(is_new_session) OVER (ORDER BY user_pseudo_id, event_time) AS global_session_id,
-    SUM(is_new_session) OVER (PARTITION BY user_pseudo_id ORDER BY event_time) AS user_session_id,
-    campaign,
-    country,
-    purchase_revenue_in_usd
-  FROM new_session
-),
-
--- Finding the sessions campaing name
-campaign as (
-  SELECT 
-  user_pseudo_id,
-  global_session_id,
-  adsense_campaing.Campaign_name,
-FROM global_sessions
-JOIN 
-    (SELECT DISTINCT (Campaign) as Campaign_name
-      FROM `turing_data_analytics.adsense_monthly`) as adsense_campaing
-  ON global_sessions.campaign = adsense_campaing.Campaign_name
- ), 
-
--- Calculating each session Revenue
-session_revenue as (
-  SELECT 
-    user_pseudo_id,
-    global_session_id,
-    SUM(purchase_revenue_in_usd) as revenue
-  FROM global_sessions
-  GROUP BY user_pseudo_id, global_session_id
-),
-
-
--- Calculating each session session times in minutes
-session_time as (
-  SELECT 
-    user_pseudo_id, 
-    global_session_id,
-    user_session_id,
-    MIN(event_time) as first_event_time,
-    MAX(event_time) as last_event_time,
-    country,
-    (DATE_DIFF(MAX(event_time),MIN(event_time),second)) as session_time,
-  FROM global_sessions
-    GROUP BY user_pseudo_id, global_session_id, user_session_id, country
-),
-
--- Joining session time data and session revenues
-combined_data as (
-  SELECT 
-    session_time.user_pseudo_id, 
-    session_time.global_session_id,
-    session_time.user_session_id,
-    session_time.first_event_time,
-    session_time.last_event_time,
-    session_time.country,
-    campaign.campaign_name,
-    session_time.session_time,
-    CASE 
-      WHEN EXTRACT(hour FROM session_time.first_event_time) BETWEEN 0 AND 5 THEN 'Night'
-      WHEN EXTRACT(hour FROM session_time.first_event_time) BETWEEN 6 AND 11 THEN 'Morning'
-      WHEN EXTRACT(hour FROM session_time.first_event_time) BETWEEN 12 AND 17 THEN 'Afternoon'
-      WHEN EXTRACT(hour FROM session_time.first_event_time) BETWEEN 18 AND 23 THEN 'Evening'
-    END AS session_time_of_the_day,
-    CASE
-      WHEN session_time.session_time = 0 THEN 1 ELSE 0 END AS bounce_status,
-    session_revenue.revenue
-  FROM session_time
-  JOIN campaign
-    ON session_time.global_session_id = campaign.global_session_id
-  JOIN session_revenue
-    ON session_time.global_session_id = session_revenue.global_session_id
-    GROUP BY user_pseudo_id, global_session_id, user_session_id, first_event_time, last_event_time, campaign.campaign_name, country, session_time,session_revenue.revenue
-   
+    event_name, 
+    event_time
 )
-
--- main query where selecting all the data for futher analysis
-SELECT 
-*
-FROM combined_data
+-- -- Calculates the duration of each session in minutes by joining the "sessions" and "events" CTEs and grouping the results by session_id.
+,session_duration AS (
+    SELECT
+        session_id,
+        s.campaign,
+        s.event_name,
+        DATE_DIFF(MAX(e.event_time), MIN(e.event_time), minute)                                                        AS duration,
+        day_of_week,
+        day_name
+    FROM sessions s
+    LEFT JOIN events e ON e.user_pseudo_id = s.user_pseudo_id
+        AND event_time >= s.session_start_at
+        AND (event_time < s.next_session_start_at OR s.next_session_start_at IS NULL)
+    GROUP BY session_id, 
+    s.campaign,
+    s.event_name, 
+    day_of_week,
+    day_name
+   )
+-- The query calculates the count and average session duration for each combination of campaign and day of the week.
+SELECT
+    day_of_week,
+    day_name,
+    campaign,
+    event_name,
+    COUNT(*)                                                                                                          AS sessions_count,
+    APPROX_QUANTILES(duration, 2)[OFFSET(1)]                                                                          AS median_session_duration,
+    -- AVG(duration)                                                                                                     AS avg_session_duration
+FROM session_duration
+GROUP BY   
+day_of_week,
+day_name,
+campaign,
+event_name, 
+duration
+-- HAVING campaign IN(
+-- 'Data Share Promo'    
+-- ,'Holiday_V1',
+-- 'Holiday_V2',
+-- 'NewYear_V1',
+-- 'NewYear_V2',
+-- 'BlackFriday_V1',
+-- 'BlackFriday_V2'
+-- )
+ORDER BY 
+campaign, 
+day_of_week,
+day_name
