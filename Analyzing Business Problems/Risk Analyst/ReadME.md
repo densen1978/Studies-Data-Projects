@@ -39,7 +39,7 @@ By achieving them we will have a better understanding of our customers and what 
 
 All the analysis steps can be found in the report, where all main questions and main insights are clearly introduced.
 
-The report can be found [here](https://github.com/densen1978/Studies-Data-Projects/blob/main/Analyzing%20Business%20Problems/Product%20Analyst/Analyzing%20Business%20Problem%20-%20Product%20Analysis.pdf)
+The report can be found [here](https://github.com/densen1978/Studies-Data-Projects/blob/main/Analyzing%20Business%20Problems/Risk%20Analyst/Analyzing%20Business%20Problem%20-%20Risk%20Analysis.pdf)
 
 ### Looker Studio Report
-To analyze dataset and evaluate current mortage portfolio and  report was prepared, which can be found [here](https://lookerstudio.google.com/u/0/reporting/de4321e1-d97a-4eb3-9466-930dcea90010/page/p_tphw12h3dd)
+To analyze dataset and evaluate current mortage portfolio and Looker Studio report was prepared, which can be found [here](https://lookerstudio.google.com/u/0/reporting/de4321e1-d97a-4eb3-9466-930dcea90010/page/p_tphw12h3dd)
