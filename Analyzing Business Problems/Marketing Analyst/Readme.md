@@ -44,7 +44,7 @@ For the business to understand users' behavior, session times per campaigns, and
 
   All the analysis steps can be found in the report, where all main questions and main insights are clearly introduced.
 
-  The report can be found [here](https://)
+  The report can be found [here](https://github.com/densen1978/Studies-Data-Projects/blob/main/Analyzing%20Business%20Problems/Marketing%20Analyst/Analyzing%20Business%20Problem%20-%20Marketing%20Analysis.pdf)
 
 **Looker Studio Report**
 
